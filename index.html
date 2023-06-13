@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        header{
+            margin-left: 350px;
+            margin-bottom: 50px;
+            font-size: x-large;
+        }
+        #container{
+            margin-left: 150px;
+            height: 400px;
+            width: 500px;
+            background-color: aliceblue;
+            border: 1px solid black;
+            
+        }
+        h1{
+            text-align: center;
+        }
+        input{
+            margin-left: 50px;
+            width: 350px;
+        }
+        ul{
+            list-style: none;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+        li{
+            background-color: aquamarine;
+            margin-top: 5px;
+        }
+        label{
+            margin-left: 50px;
+        }
+        button{
+            margin-left: 50px;
+            margin-top: 10px;
+            width:360px;
+            background-color: grey;
+        }
+        #outputdata{
+            margin-left: 50px;
+            height: 150px;
+            border:1px solid black;
+            width: 350px;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <header>Simple Form</header>
+    <section id="container" >
+<form >
+    <h1>New user</h1>
+    <div class="massage"></div>
+
+   <div><label for="text">Name</label><br>
+    <input type="text" id="name"><br></div> 
+
+<div><label for="text">Email</label><br>
+    <input type="text" id="email"><br></div>
+
+    <div><label for="age">Age</label><br>
+        <input type="number" id="age"><br></div>
+
+
+ <button type="button" id="btnInsert">Submit</button>
+</form>
+ <div id="outputdata">
+    <h3>output </h3>
+
+ </div>
+    </section>
+    <script>
+   
+    var nameInput=document.getElementById("name")
+    var emailInput=document.getElementById("email")
+    var ageInput=document.getElementById("age")
+    var output=document.getElementById("outputdata")
+    var btnInsert=document.getElementById("btnInsert")
+
+    btnInsert.onclick=function(e){
+        const nameout=nameInput.value
+        const emailout =emailInput.value
+        const ageout=ageInput.value;
+      
+        console.log(nameout)
+        console.log(emailout)
+        console.log(ageout)
+
+        if(nameout&&emailout&&ageout){
+            localStorage.setItem('Name',nameout)
+            localStorage.setItem('Email',emailout)
+            localStorage.setItem('Age',ageout)
+            location.reload()
+        }
+
+    }
+  for(let i=0;i<localStorage.length;i++){
+   const key=localStorage.key(i);
+   const name= document.getElementById("outputdata").innerHTML = localStorage.getItem("Name");
+   const email=document.getElementById("outputdata").innerHTML = localStorage.getItem("Email");
+   const age=document.getElementById("outputdata").innerHTML = localStorage.getItem("Age");
+    output.innerHTML+=`Name: ${name} Email:  ${email} Age: ${age}`
+  }
+ 
+   
+
+
+
+            
+    </script>
+</body>
+</html>
